@@ -8,6 +8,6 @@ out vec4 color;
 
 void main () {
 
-    color = vec4( segment, 0, 0, 1 );
+    color = vec4( 1 );
 
 }

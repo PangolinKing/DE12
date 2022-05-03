@@ -1,15 +1,12 @@
 const canvas = document.getElementById("canvas");
 const gl = canvas.getContext( "webgl2", { alpha: false, antialias: false } );
-const globals = { width: 1200, height: 800, amount: 1000000, stopped: false, frameCount: 0 };
+const globals = { width: 1200, height: 800, amount: 100, stopped: false, frameCount: 0 };
 
-var EN1 = new GUIEncoder( document.getElementById("encoder-so"), 0, 30, 6 );
-var EN2 = new GUIEncoder( document.getElementById("encoder-sa"), 0, 2, 0.8 );
-var EN3 = new GUIEncoder( document.getElementById("encoder-ra"), 0, 1, 0.5 );
-var EN4 = new GUIEncoder( document.getElementById("encoder-df"), 0.8, 1, 0.9 );
-var EN5 = new GUIEncoder( document.getElementById("encoder-ms"), 0, 2, 1 );
-
-var stats = new FPSMeter();
-
+var EN1 = 6; 
+var EN2 = 0.8;
+var EN3 = 0.5;
+var EN4 = 0.9;
+var EN5 = 1;
 ////////////////////////
 
 function loadFile ( filePath ) {
@@ -307,10 +304,10 @@ function moveStage () {
 
     gl.useProgram( SP2 );
     gl.uniform2f( U2x1, globals.width, globals.height );
-    gl.uniform1f( U2x2, EN1.getValue() );
-    gl.uniform1f( U2x3, EN2.getValue() );
-    gl.uniform1f( U2x4, EN3.getValue() );
-    gl.uniform1f( U2x5, EN5.getValue() );
+    gl.uniform1f( U2x2, EN1 );
+    gl.uniform1f( U2x3, EN2 );
+    gl.uniform1f( U2x4, EN3 );
+    gl.uniform1f( U2x5, EN5 );
 
     gl.bindTexture( gl.TEXTURE_2D, TEX2 );
 
@@ -331,7 +328,7 @@ function diffuseStage () {
 
     gl.useProgram( SP3 );
     gl.uniform2f( U3x1, globals.width, globals.height );
-    gl.uniform1f( U3x2, EN4.getValue() );
+    gl.uniform1f( U3x2, EN4 );
 
     gl.bindTexture( gl.TEXTURE_2D, TEX1 );
 
@@ -372,13 +369,11 @@ function copyingStage () {
 
 function update () {
 
-    stats.update();
-
     if ( globals.stopped == false ) {
 
         moveStage();
         diffuseStage();
-        postprocessStage();
+        // postprocessStage();
         copyingStage();
 
         globals.frameCount += 1;

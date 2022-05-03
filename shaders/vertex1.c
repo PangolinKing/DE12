@@ -44,7 +44,7 @@ void main () {
 
     /////////////////////////
 
-    segment = float( gl_VertexID % 2 ); gl_PointSize = 1.0;
+    segment = float( gl_VertexID % 2 ); gl_PointSize = 4.0;
     gl_Position = vec4( 2.0*(result.xy/resolution)-1.0, 0, 1 );
 
 }

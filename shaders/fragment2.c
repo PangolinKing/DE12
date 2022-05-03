@@ -23,7 +23,7 @@ void main () {
 
     value = 0.5+(value-0.5)*DF;
 
-    color = vec4( value, 0, 0, 1 );
+    color = texture( map, gl_FragCoord.xy / resolution);//vec4( value, 0, 0, 1 );
 
 }
 

@@ -24,7 +24,7 @@ void main () {
     float H1 = clamp( (value-0.25)/fwidth(value-0.25)+0.5, 0.0, 1.0 );
     float H2 = clamp( (value-0.75)/fwidth(value-0.75)+0.5, 0.0, 1.0 );
 
-    color = (1.0-H1)*vec4(0.647,0.219,0.325,1) + H2*vec4(0.388,0.600,0.796,1);
+    color = texture( map, gl_FragCoord.xy / resolution);//(1.0-H1)*vec4(0.647,0.219,0.325,1) + H2*vec4(0.388,0.600,0.796,1);
 
 }
 

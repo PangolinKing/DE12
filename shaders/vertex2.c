@@ -32,14 +32,15 @@ void main () {
 
     //////////////////////
 
-    result.x = mod( particle.x + cos(R1) * ND2 * MS, resolution.x );
-    result.y = mod( particle.y + sin(R1) * ND2 * MS, resolution.y );
+    result.x = particle.x + 1.; //mod( particle.x + cos(R1) * ND2 * MS, resolution.x );
+    result.y = particle.y; //mod( particle.y + sin(R1) * ND2 * MS, resolution.y );
     result.z = R1;
 
     //////////////////////
 
-    segment = ND1; gl_PointSize = 1.0;
-    gl_Position = vec4( 2.0*(result.xy/resolution)-1.0, 0, 1 );
+    segment = ND1;
+    gl_PointSize = 4.0;
+    gl_Position = vec4( 2.0*(fract(result.xy/resolution))-1.0, 0, 1 );
 
 }
 
