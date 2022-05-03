@@ -372,7 +372,7 @@ function update () {
     if ( globals.stopped == false ) {
 
         moveStage();
-        diffuseStage();
+        // diffuseStage();
         // postprocessStage();
         copyingStage();
 
